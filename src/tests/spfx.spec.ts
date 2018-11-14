@@ -24,7 +24,7 @@ describe('Tests on a site page (not news)', () => {
       username: cpass.decode(username),
       password: cpass.decode(password)
     });
-    
+
     browser = await puppeteer.launch();
     page = await browser.newPage();
     // Add the authentication headers
