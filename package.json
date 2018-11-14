@@ -1,0 +1,23 @@
+{
+  "name": "puppeteer-spfx-tests",
+  "version": "1.0.0",
+  "description": "Sample project to show how you can test the UI of your SPFx solutions in SharePoint",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && jest"
+  },
+  "author": "Elio Struyf",
+  "license": "MIT",
+  "dependencies": {
+    "cpass": "2.0.5",
+    "jest": "23.6.0",
+    "node-sp-auth": "2.5.6",
+    "puppeteer": "1.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "23.3.9",
+    "@types/puppeteer": "1.10.0",
+    "typescript": "3.1.6"
+  }
+}
