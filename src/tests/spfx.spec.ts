@@ -1,14 +1,6 @@
 import * as puppeteer from 'puppeteer';
 import * as spauth from 'node-sp-auth';
 
-import * as fs from 'fs';
-import * as path from 'path';
-import { Cpass } from 'cpass';
-
-const cpass = new Cpass();
-const config = fs.readFileSync(path.join(__dirname, "../../config.json"), "UTF-8");
-const configObj = JSON.parse(config);
-
 describe('Tests on a site page (not news)', () => {
   let browser: puppeteer.Browser = null;
   let page: puppeteer.Page = null;
@@ -17,12 +9,12 @@ describe('Tests on a site page (not news)', () => {
    * Create the browser and page context
    */
   beforeAll(async () => {
-    const {username, password, pageUrl} = configObj;
+    const { USERNAME: username, PASSWORD: password, PAGEURL: pageUrl } = process.env;
     
     // Connect to SharePoint
     const data  = await spauth.getAuth(pageUrl, {
-      username: cpass.decode(username),
-      password: cpass.decode(password)
+      username,
+      password
     });
 
     browser = await puppeteer.launch();
@@ -36,7 +28,7 @@ describe('Tests on a site page (not news)', () => {
     });
 
     // Open the page
-    await page.goto(configObj.pageUrl, {
+    await page.goto(pageUrl, {
       waitUntil: 'networkidle0'
     });
   }, 30000);

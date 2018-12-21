@@ -12,6 +12,7 @@
   "dependencies": {
     "cpass": "2.0.5",
     "jest": "23.6.0",
+    "jest-junit": "5.2.0",
     "node-sp-auth": "2.5.6",
     "puppeteer": "1.10.0"
   },
@@ -19,5 +20,16 @@
     "@types/jest": "23.3.9",
     "@types/puppeteer": "1.10.0",
     "typescript": "3.1.6"
+  },
+  "jest": {
+    "reporters": [
+      [
+        "jest-junit", {
+          "suiteName": "SharePoint SPFx Testing",
+          "outputDirectory": "./reports/",
+          "outputName": "./junit.xml"
+        }
+      ]
+    ]
   }
 }
